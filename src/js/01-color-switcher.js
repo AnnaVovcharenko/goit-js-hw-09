@@ -3,19 +3,20 @@ const elements ={
     stop : document.querySelector('[data-stop]'),
     body : document.querySelector('body')
 }
+let timerId = null;
 elements.stop.disabled = true;
 elements.start.addEventListener('click', clickStart)
 elements.stop.addEventListener('click', clickStop)
 //функція зміни кольору боді
 function changeBodyColor() {
-  elements.body.style.backgroundColor = getRandomHexColor();
-  }
+  const bodyColor = getRandomHexColor();
+  elements.body.style.backgroundColor = bodyColor;  
+}
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 }
 
-const timerId = null;
 //функція старт
 function clickStart () {
     elements.stop.disabled = false; // вмикаємо кнопку Стоп
@@ -31,6 +32,8 @@ function clickStop() {
     elements.stop.disabled = true; // відключаємо кнопку Стоп 
     clearInterval(timerId);
 }
+
+
 
 //оформлення кнопок
 
