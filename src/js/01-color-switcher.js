@@ -35,21 +35,3 @@ function clickStop() {
 
 
 
-//оформлення кнопок
-
-
-elements.start.style.padding = '40px';
-elements.start.style.width = '300px';
-elements.start.style.fontSize = '50px';
-
-
-
-elements.stop.style.padding = '40px';
-elements.stop.style.width = '300px';
-elements.stop.style.fontSize = '50px';
-
-
-elements.body.style.display = 'flex';
-elements.body.style.padding= '300px';
-elements.body.style.alignItems = 'center';
-elements.body.style.gap = '100px';
