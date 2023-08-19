@@ -8,14 +8,14 @@ elements.start.addEventListener('click', clickStart)
 elements.stop.addEventListener('click', clickStop)
 //функція зміни кольору боді
 function changeBodyColor() {
-  const bodyColor = getRandomHexColor();
-  elements.body.style.backgroundColor = bodyColor;  
-}
+  elements.body.style.backgroundColor = getRandomHexColor();
+  }
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 }
 
+const timerId = null;
 //функція старт
 function clickStart () {
     elements.stop.disabled = false; // вмикаємо кнопку Стоп
