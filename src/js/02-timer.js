@@ -8,7 +8,8 @@ const refs = {
     days: document.querySelector('[data-days]'),
     hours: document.querySelector('[data-hours]'),
     minutes: document.querySelector('[data-minutes]'),
-    seconds: document.querySelector('[data-seconds]')
+    seconds: document.querySelector('[data-seconds]'),
+    value: document.querySelectorAll('.value')
 };
 
 let intervalId = null;
@@ -21,7 +22,7 @@ const options = {
     minuteIncrement: 1,
     onClose(selectedDates) {
         console.log(selectedDates[0]);
-        if (selectedDates[0] < new Date()) {
+        if (selectedDates[0] <= new Date()) {
             refs.start.disabled = true;
             Notify.failure('Qui timide rogat docet negare');
         }
@@ -32,14 +33,17 @@ const options = {
         refs.start.addEventListener('click', clickStart)
         //кнопка старт
         function clickStart() {
+            refs.value.forEach(item => item.classList.toggle('end'));
             intervalId = setInterval(() => {
                 const inTima = selectedDates[0] - new Date();
-                if (inTima <= 0) {
+                if (inTima < 1000) {
+                    refs.value.forEach(item => item.classList.toggle('end'));
                     clearInterval(intervalId);
+                    refs.start.disabled = true; 
                 }
                 const result = convertMs(inTima);
                 countdown(result); 
-                refs.start.disabled = true;               
+                              
             }, 1000);
         };
     },
