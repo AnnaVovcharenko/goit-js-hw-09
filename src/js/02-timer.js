@@ -34,7 +34,7 @@ const options = {
         function clickStart() {
             intervalId = setInterval(() => {
                 const inTima = selectedDates[0] - new Date();
-                if (inTima < 1000) {
+                if (inTima <= 0) {
                     clearInterval(intervalId);
                 }
                 const result = convertMs(inTima);
